@@ -21,7 +21,7 @@
             <hr />
   
             <section>
-              <form action="login-backend" method="GET" class="font-weight-bold">
+              <form th:action="@{/userHome}" method="POST" class="font-weight-bold">
                 <!-- Email -->
                 <div id="emailField" name="emailField" class="form-group row">
                   <label for="email" class="col-sm-4 ml-4 col-form-label"
@@ -89,7 +89,7 @@
                 <div id="loginButton" class="row">
                   <div class="col-sm-10 offset-sm-1">
                     <input
-                      type="login"
+                      type="button"
                       value="Login"
                       class="btn btn-block btn-primary mb-2"
                       onClick="validateInputs()"

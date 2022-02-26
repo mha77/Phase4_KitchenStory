@@ -29,4 +29,22 @@ public class UserService {
 
     }
 
+    public boolean registerUser(String fname, String lname, String email, String password){
+
+        User user = new User();
+        user.setFname(fname);
+        user.setLname(lname);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        User ret = userRepository.save(user);
+
+        if(true){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }

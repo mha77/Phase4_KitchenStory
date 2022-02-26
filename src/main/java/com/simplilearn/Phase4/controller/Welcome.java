@@ -6,10 +6,7 @@ import com.simplilearn.Phase4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -41,6 +38,27 @@ public class Welcome {
         return "UserLogin";
     }
 
+    @ResponseBody
+    @PostMapping("/userHome")
+    public String userHome(@ModelAttribute("user") User user, Model model)
+    {
+        String email = user.getEmail();
+        String pw = user.getPassword();
+
+        boolean auth = us.authenticateUser(email, pw);
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("UserHome");
+        System.out.println("Auth: " + auth);
+        //return "success";
+
+
+        if(auth == true) {
+            return "success";
+        }else {
+            return "error";
+        }
+    }
     @GetMapping("/userHome")
     public String userHome(Model model){
         return "UserHome";
@@ -57,40 +75,43 @@ public class Welcome {
         return "AdminLogin";
     }
 
+    @ResponseBody
     @PostMapping("/adminHome")
     public String adminHome(@ModelAttribute("user") User user, Model model){
 
-
         String email = user.getEmail();
         String pw = user.getPassword();
-        System.out.println("Email: " + email);
-        System.out.println("PW: " + pw);
 
         boolean auth = us.authenticateUser(email, pw);
 
-        System.out.println("Auth: " + auth);
-
-        //model.addAttribute("user", user);
-
-        System.out.println("TEst");
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        //return modelAndView;
-        return "AdminHome";
-        //return "redirect:/adminHome";
-        /*if(auth == true) {
-
+        if(auth == true) {
+             return "success";
         }else {
-            //model.addAttribute("error", "Password invalid");
-            return "index";
-        }*/
-
-        //return "AdminHome";
+            return "error";
+        }
     }
 
     @GetMapping("/adminHome")
-    public String adminHome(Model model){
+    public String adminHome( Model model )
+    {
         return "AdminHome";
+    }
+
+    @ResponseBody
+    @PostMapping("/userRegister")
+    public String userRegister(@ModelAttribute("user") User user, Model model){
+
+        String email = user.getEmail();
+        String pw = user.getPassword();
+        String fname = user.getFname();
+        String lname = user.getLname();
+
+        boolean reg = us.registerUser(fname, lname, email, pw);
+
+        if(reg) {
+            return "success";
+        }else {
+            return "error";
+        }
     }
 }

@@ -1,7 +1,7 @@
   function validateEmailWithRegex(email) {
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
-    return !!email && typeof email === "string" && email.match(emailRegex);
+    return !email && typeof email === "string" && email.match(emailRegex);
   }
   
   function checkInputEmail(email) {
@@ -39,7 +39,8 @@
   
   function validateInputs() {
     let email = document.getElementById("email").value;
-  
+
+    let forward = false
     // input sanitization
     email = email.trim();
     email = escapeHtml(email);
@@ -47,8 +48,10 @@
     let validEmail = validateEmailWithRegex(email);
     if(validEmail == false){
         document.getElementById('emailInvalid').className = "text-danger visible"
+        forward = false
     }else{
         document.getElementById('emailInvalid').className = "invisible"
+        forward = true
     }
 
     let fname = document.getElementById("fname").value
@@ -65,8 +68,38 @@
     let validName = validateName(fname, lname);
     if (validName == false){
         document.getElementById("nameInvalid").className = "text-danger visible"
+        forward = false
     }
     else{
         document.getElementById("nameInvalid").className = "invisible"
+        forward = true
+    }
+
+    let pw = document.getElementById("password").value
+
+    pw = pw.trim()
+    pw = escapeHtml(pw)
+
+    if(forward){
+     //console.log("in submit form")
+          var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == XMLHttpRequest.DONE) {
+                    if("success" == xhttp.responseText){
+                        window.location.href = "userLogin"
+                    }else{
+                        window.location.href = "userRegister"
+                    }
+                }
+            }
+
+
+            xhttp.open("POST", "/userRegister", true);
+            var user = new FormData();
+            user.append("email", email);
+            user.append("password", pw);
+            user.append("fname", fname);
+            user.append("lname", lname);
+            xhttp.send(user);
     }
   }

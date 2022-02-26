@@ -19,6 +19,7 @@ function validatePassword(pw){
 }
 
   function validateInputs() {
+    //console.log("in validate function")
     let forward = false;
 
     let email = document.getElementById("email").value;
@@ -51,6 +52,24 @@ function validatePassword(pw){
         forward=false;
     }
     if(forward){
-       window.location.href = '/userHome';
+
+        //console.log("in submit form")
+      var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == XMLHttpRequest.DONE) {
+                if("success" == xhttp.responseText){
+                    window.location.href = "userHome"
+                }else{
+                    window.location.href = "userLogin"
+                }
+            }
+        }
+
+
+        xhttp.open("POST", "/userHome", true);
+        var user = new FormData();
+        user.append("email", email);
+        user.append("password", pw);
+        xhttp.send(user);
     }
   }
