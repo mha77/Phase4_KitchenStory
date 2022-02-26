@@ -51,6 +51,41 @@ function validatePassword(pw){
         forward=false;
     }
     if(forward){
-       window.location.href = '/adminHome';
+
+autoLogIn(email, pw)
+   /* var xhttp = new XMLHttpRequest();
+    if (xhttp.readyState == XMLHttpRequest.DONE) {
+            alert(xhttp.responseText);
+        }
+
+    xhttp.open("POST", "/adminHome", true);
+    var user = new FormData();
+    user.append("email", "haemarkus@gmail.com");
+    user.append("password", "#6testTEST");
+    xhttp.send(user);
+*/
+
+    //    window.location.href = '/adminHome?email=haemarkus@gmail.com&password=#6testTEST'
     }
+  }
+
+  function autoLogIn(email, pw) {
+      var form = document.createElement("form");
+      var element1 = document.createElement("input");
+      var element2 = document.createElement("input");
+
+      form.method = "POST";
+      form.action = ""/adminHome";
+
+      element1.value="haemarkus@gmail.com";
+      element1.name="email";
+      form.appendChild(element1);
+
+      element2.value= "#6testTEST";
+      element2.name="password";
+      form.appendChild(element2);
+
+      document.body.appendChild(form);
+
+      form.submit();
   }
