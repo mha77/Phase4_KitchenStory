@@ -1,16 +1,32 @@
 $(document).ready(function() {
+$('#table_id').DataTable(
     let table = new DataTable('#table_id', {
-         "columnDefs": [ {
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<button>Delete</button>"
-        },
-        {
-            "targets": -2,
-            "data": null,
-            "defaultContent": "<input type='checkbox' checked data-toggle='toggle'>Enable</input>"
+    "ajax": {
+        "url": "/getProducts",
+        "type": "GET"
+    },
+    dom: 'Bfrtip',
+    buttons: [
+    {
+        text: 'My button',
+        className: 'custom-html-collection',
+        action: function ( e, dt, node, config ) {
+        alert( 'Button activated' );
         }
-        ]
+    }
+    ],
+    "columnDefs": [ {
+        "targets": -1,
+        "data": null,
+        "defaultContent": "<button>Delete</button>"
+    },
+    {
+        "targets": -2,
+        "data": null,
+        "defaultContent": "<input type='checkbox' checked data-toggle='toggle'>Enable</input>"
+    }
+    ]
+
     } );
  
     $('#table_id tbody').on( 'click', 'button', function () {

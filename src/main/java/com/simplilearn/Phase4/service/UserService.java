@@ -16,7 +16,7 @@ public class UserService {
 
 
     public boolean authenticateUser(String email, String pw) {
-        //List<User> users = new ArrayList<>();
+
         List<User> users = new ArrayList<>();
         users = userRepository.findAll();
 
@@ -26,7 +26,6 @@ public class UserService {
             }
         }
         return false;
-
     }
 
     public boolean registerUser(String fname, String lname, String email, String password){
@@ -37,9 +36,22 @@ public class UserService {
         user.setEmail(email);
         user.setPassword(password);
 
-        User ret = userRepository.save(user);
+        List<User> users;
+        users = userRepository.findAll();
 
-        if(true){
+        boolean exists = false;
+
+        for(User us : users){
+            if(us.getEmail() == user.getEmail()){
+                exists = true;
+            }
+        }
+
+        if(!exists) {
+            User ret = userRepository.save(user);
+        }
+
+        if(!exists){
             return true;
         }else{
             return false;
