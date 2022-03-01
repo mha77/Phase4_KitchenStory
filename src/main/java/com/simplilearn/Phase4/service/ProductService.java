@@ -21,4 +21,11 @@ public class ProductService {
 
         return products;
     }
+
+    public Product saveProducts(Product product){
+        //List<Product> products = new ArrayList<>();
+        Product p = productRepository.save(product);
+
+        return p;
+    }
 }
