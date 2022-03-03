@@ -52,8 +52,6 @@ function validatePassword(pw){
         forward=false;
     }
     if(forward){
-
-        //console.log("in submit form")
       var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (xhttp.readyState == XMLHttpRequest.DONE) {

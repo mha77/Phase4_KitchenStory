@@ -72,3 +72,13 @@ $(document).ready(function() {
             table.cell(idx, 9).data(total.toFixed(2));
         });
 });
+
+document.getElementById('delCart').addEventListener("click", function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == XMLHttpRequest.DONE) {
+        }
+    }
+    xhttp.open("GET", "/delCart", true);
+    xhttp.send(null);
+});

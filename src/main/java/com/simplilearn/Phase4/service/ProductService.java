@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -17,8 +18,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    @Autowired
-    CartRepository cr;
+
 
     public List<Product> getProducts(){
         List<Product> products = new ArrayList<>();
@@ -34,16 +34,20 @@ public class ProductService {
         return p;
     }
 
-    public Cart saveCart(Cart cart){
-        //System.out.println("Cart: " + cart.getCompany());
-        Cart c = cr.save(cart);
-        //int cId = c.getCart_id();
-        //cart.
-        return c;
-    }
-
     public void delProduct(Product product){
         int id = product.getProduct_id();
         productRepository.deleteById(id);
+    }
+
+    public void updateEnabled(Product product){
+        int id = product.getProduct_id();
+        boolean enabled = product.isEnabled();
+
+        Optional<Product> p = productRepository.findById(id);
+        Product pr = p.get();
+
+        System.out.println("enabled" + enabled);
+        pr.setEnabled(enabled);
+        productRepository.save(pr);
     }
 }

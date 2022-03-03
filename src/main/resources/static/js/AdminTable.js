@@ -78,15 +78,26 @@ $('#table_id tbody').on( 'click', '#delRow', function () {
 $('#table_id tbody').on( 'click', '#enable', function () {
 //todo update database with enabled/disabled
         //update boolean cell with true or false
-        //var idx = table.cell('.selected', 0).index();
+        let rowData = table.row( $(this).parents('tr') ).data();
         let idx = table.row( $(this).parents('tr')).index()
-        //alert ("rowindex " + idx)
 
         if($(this).prop("checked"))
         {
             table.cell(idx, 5).data(true);
+            rowData.enabled = true
         }else{
             table.cell(idx, 5).data(false);
+            rowData.enabled = false
         }
+
+        $.ajax({
+            "dataType":"json",
+            'contentType': 'application/json',
+            "type": "POST",
+            "url": "updateEnabled",
+            "data": JSON.stringify(rowData)
+        });
+
+
     });
 });

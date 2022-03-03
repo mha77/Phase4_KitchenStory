@@ -1,6 +1,5 @@
 package com.simplilearn.Phase4.controller;
 
-import com.simplilearn.Phase4.entity.Cart;
 import com.simplilearn.Phase4.entity.Product;
 import com.simplilearn.Phase4.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +34,9 @@ public class Products {
         ps.delProduct(product);
     }
 
-    @RequestMapping(value = "/addToCart", method = RequestMethod.POST, consumes = "application/json")
-    public void addToCart(@RequestBody Cart cart){
-        ps.saveCart(cart);
+    @RequestMapping(value = "/updateEnabled", method = RequestMethod.POST, consumes = "application/json")
+    public void updateEnabled(@RequestBody Product product){
+        ps.updateEnabled(product);
     }
 
 }
