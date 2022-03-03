@@ -64,8 +64,6 @@ function validatePassword(pw){
                 }
             }
         }
-
-
         xhttp.open("POST", "/userHome", true);
         var user = new FormData();
         user.append("email", email);

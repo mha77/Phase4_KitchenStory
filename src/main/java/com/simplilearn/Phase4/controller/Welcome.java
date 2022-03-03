@@ -19,8 +19,12 @@ public class Welcome {
 
     @RequestMapping("/")
     public String welcome(Model model) {
-        //model.addAttribute("user", new User());
         return "index";
+    }
+
+    @GetMapping("/test")
+    public String test(Model model){
+        return "test";
     }
 
     @GetMapping("/userMain")
@@ -46,12 +50,7 @@ public class Welcome {
         String pw = user.getPassword();
 
         boolean auth = us.authenticateUser(email, pw);
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("UserHome");
         System.out.println("Auth: " + auth);
-        //return "success";
-
 
         if(auth == true) {
             return "success";

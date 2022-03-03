@@ -1,6 +1,7 @@
 package com.simplilearn.Phase4.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="user")

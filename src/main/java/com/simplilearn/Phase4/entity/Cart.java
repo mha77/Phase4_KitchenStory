@@ -1,13 +1,21 @@
 package com.simplilearn.Phase4.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name="product")
-public class Product {
+@Table(name="cart_table")
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="cart_id")
+    private int cart_id;
+
+    @Column(name="quantity")
+    private int quantity;
+
     @Column(name="product_id")
     private int product_id;
 
@@ -72,5 +80,21 @@ public class Product {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public int getCart_id() {
+        return cart_id;
+    }
+
+    public void setCart_id(int cart_id) {
+        this.cart_id = cart_id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

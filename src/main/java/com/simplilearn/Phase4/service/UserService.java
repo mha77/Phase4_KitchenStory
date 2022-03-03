@@ -14,7 +14,6 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-
     public boolean authenticateUser(String email, String pw) {
 
         List<User> users = new ArrayList<>();
@@ -56,7 +55,5 @@ public class UserService {
         }else{
             return false;
         }
-
     }
-
 }
