@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <title>Document</title>
+</head>
+<body>
+<main class="row">
+    <div class="col-10 my-5 mx-auto align-self-center">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" th:href="@{/}">Kitchen Story</a>
+            <div class="collapse navbar-collapse flex-grow-1 text-left">
+                <ul class="navbar-nav ml-auto flex-nowrap">
+                    <li class="nav-item">Order Cart</li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse flex-grow-1 text-right">
+                <ul class="navbar-nav ml-auto flex-nowrap">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}">Logout <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div>
+            <section>
+                <table id="table_id" class="display">
+                    <thead>
+                    <tr>
+                        <th>Cart ID</th>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Unit</th>
+                        <th>Price</th>
+                        <th>enabled</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script src="../vendor/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="../js/cart.js"></script>
+<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

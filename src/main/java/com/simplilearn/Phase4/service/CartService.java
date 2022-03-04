@@ -5,6 +5,8 @@ import com.simplilearn.Phase4.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CartService {
 
@@ -18,5 +20,10 @@ public class CartService {
 
     public void delCart(){
         cr.deleteAll();
+    }
+
+    public List<Cart> getCart(){
+        List<Cart> cl = cr.findAll();
+        return cl;
     }
 }

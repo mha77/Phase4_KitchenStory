@@ -34,6 +34,10 @@ public class Cart {
     @Column(name="enabled")
     private boolean enabled;
 
+    public float getTotal() {
+        return this.price * this.quantity;
+    }
+
     public int getProduct_id() {
         return product_id;
     }

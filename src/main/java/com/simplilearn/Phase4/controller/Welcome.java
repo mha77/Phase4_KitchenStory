@@ -74,6 +74,13 @@ public class Welcome {
         return "AdminLogin";
     }
 
+
+    @GetMapping("/showCart")
+    public String showCart( Model model )
+    {
+        return "Cart";
+    }
+
     @ResponseBody
     @PostMapping("/adminHome")
     public String adminHome(@ModelAttribute("user") User user, Model model){

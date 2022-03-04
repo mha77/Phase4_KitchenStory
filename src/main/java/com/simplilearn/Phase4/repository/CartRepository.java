@@ -12,5 +12,5 @@ public interface CartRepository extends CrudRepository<Cart, Integer> {
 
 
     //public User findByName(String name);
-    //List<Product> findAll();
+    List<Cart> findAll();
 }

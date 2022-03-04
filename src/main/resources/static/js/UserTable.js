@@ -8,19 +8,18 @@ $(document).ready(function() {
                      "dataSrc": ''
                    },
      "columns": [
-                  {'cart_id': 'cart_id',
+                  {'data': 'cart_id',
                    "visible": false,
                    "defaultContent": "notSet"},
                   {'data': 'product_id',
                   "visible": false},
                   {'data': 'name'},
                   {'data': 'company'},
-                  {'data': 'units',
-                  "visible": false},
+                  {'data': 'units'},
                   {'data': 'price'},
                   {'data': 'enabled',
                   "visible": false},
-                  {'data:': 'quantity',
+                  {'data': 'quantity',
                   "defaultContent": 0,
                   "visible": false},
                   {
@@ -51,8 +50,9 @@ $(document).ready(function() {
     $('#table_id tbody').on( 'click', '#addToCart', function () {
         //Add Row to Database
         let rowData = table.row( $(this).parents('tr') ).data();
-        rowData.quantity = rowData[7]
-        alert(JSON.stringify(rowData))
+        rowData.quantity = $(this).parents('tr').find("input").val();
+        //alert($(this).parents('tr').html());
+        //alert(JSON.stringify(rowData))
         $.ajax({
             "dataType":"json",
             'contentType': 'application/json',
@@ -67,6 +67,12 @@ $(document).ready(function() {
             let value = $(this).val()
             let idx = table.row( $(this).parents('tr')).index()
             let price = table.cell(idx, 5).data()
+            let unit = table.cell(idx, 4).data()
+            if(value > unit){
+                alert("Order ist not in stock")
+                $(this).val(unit)
+                return
+            }
             let total = value * price
             table.cell(idx, 7).data(value)
             table.cell(idx, 9).data(total.toFixed(2));
@@ -81,4 +87,8 @@ document.getElementById('delCart').addEventListener("click", function() {
     }
     xhttp.open("GET", "/delCart", true);
     xhttp.send(null);
+});
+
+document.getElementById('showCart').addEventListener("click", function() {
+    location.href ="showCart"
 });
