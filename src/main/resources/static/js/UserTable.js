@@ -1,6 +1,7 @@
 $(document).ready(function() {
  let table = $('#table_id').DataTable({
  //todo get enabled products from backend
+ //todo show units in table and that it's not possible to order more
   "ajax": {
                      "url": "getProducts",
                      "type": "GET",
